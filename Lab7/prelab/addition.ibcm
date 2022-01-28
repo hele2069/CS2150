@@ -1,0 +1,34 @@
+C008 000	jmp 	start 	jump around the variables
+0000 001 a 	dw 	0 	first element
+0000 002 b 	dw 	0 	second element
+0000 003 c 	dw 	0 	third element
+0000 004 s 	dw 	0	sum
+0000 005 zero 	dw 	0
+3005 006		load	zero
+4004 007		store	s 	
+1000 008 start 	readH 		read first
+4001 009 	store 	a
+1000 00A 	readH 		read second
+4002 00B 	store 	b
+1000 00C 	readH 		read second
+4003 00D 	store 	c	read third
+3004 00E		load 	s	s
+5001 00F		add	a	s+=a
+4004 010		store	s
+3004 011		load 	s	s
+5002 012		add	b	s+=b
+4004 013		store	s
+3004 014		load 	s	s
+5003 015		add	c	s+=c
+4004 016		store	s
+3004 017		load	s
+1800 018		printH	s
+D01B 019		jmpe	print three numbers if == 0
+C006 01A		jmp	loop
+3001 01B		load	a
+1800 01C		printH	a
+3002 01D		load	b
+1800 01E		printH	b
+3003 01F		load	c
+1800 020		printH	c
+0000 021

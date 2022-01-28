@@ -1,0 +1,101 @@
+C010 000	jmp 	start 	jump around the variables
+000A 001 	n	dw	0	int size
+0000 002	s 	dw	0	int	input
+0065 003	a 	dw 	70	int a[] address
+4000 004	storeit	dw	4000
+0001 005	one dw 	1
+000A 006	n	dw	0	int dupsize
+3000 007	loadit	dw 	3000
+0000 008	count 	dw 	0 
+0000 009    zero dw 0
+000A 00A    j   dw  10
+0000 00B    temp
+000A 00C    ten    dw   10
+0000 00D
+0000 00E
+0000 00F
+3009 010	load    0
+4008 011 	store 	count
+3001 012	load 	n		load loop  starts
+D024 013	jumpe	start
+1000 014	readH	input
+C016 015    //deleted
+4002 016	store 	input
+3004 017	load	storeit
+5003 018	add 	address
+5008 019	add 	c
+401C 01A	store 	storeit
+3002 01B	load	input
+0000 01C	storeit
+3008 01D	load	c
+5005 01E	add		1
+4008 01F	store 	c
+3001 020	load	n
+6005 021	sub		1
+4001 022	store 	n
+C012 023	jmp 	loop
+3001 024    loop    load size n    if (i >= 10)  goto xit
+6006 025    sub     10
+D055 026    jumpe   xit if n == 10  (following inner loop)
+3008 027    load    count
+6005 028    sub     1
+400A 029    store   j          make j = count
+300A 02A    loop    load j  if(i == j) go outter loop
+6001 02B    sub     n
+D051 02C    jumpe   outter loop if(i == j)
+300A 02D    load    j
+5007 02E    add     loadit
+5003 02F    add     address
+4031 030    store   loadit
+0000 031    loadit
+400B 032    store   load A[j] to temp
+300A 033    load    j
+5007 034    add     loadit
+5003 035    add     address
+6005 036    sub 1   get A[j-1]
+4038 037    store   loadit
+0000 038    loadit  load A[j-1]
+600B 039    sub     A[j]     if A[j] >= A[j-1] doesnt do stuff
+E04D 03A    if A[j] >= A[j-1] next loop
+300A 03B    load    j
+5004 03C    add     storeit
+5003 03D    add     address
+4045 03E    store   storeit
+300A 03F    load    j
+5007 040    add     loadit
+5003 041    add     address
+6005 042    sub 1   get A[j-1]
+4044 043    store   loadit
+0000 044    loadit  load A[j-1]
+0000 045    store A[j-1] into A[j]
+300A 046    load    j
+5004 047    add     storeit
+5003 048    add     address
+6005 049    sub     1
+404C 04A    store   storeit
+300B 04B    load    temp
+0000 04C    store temp into A[j-1]
+300A 04D    load    j
+6005 04E    sub     1
+400A 04F    store   j
+C02A 050    jmp     loop    goto innerloop
+3001 051    load    n                   (029 goes here) 
+5005 052    add     1
+4001 053    store   n
+C024 054    jmp     loop    goto outterloop
+3009 055	load    0
+4008 056 	store 	count
+3008 057    load    count
+600C 058    sub     ten
+D064 059	jumpe   xit
+3007 05A	load	loadit
+5003 05B	add 	address
+5008 05C	add 	count
+405E 05D	store 	loadit
+0000 05E	loadit
+1800 05F    printH
+3008 060	load	c
+5005 061	add		1
+4008 062	store 	c
+C057 063	jmp 	loop
+0000 064    halt

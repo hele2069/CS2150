@@ -1,0 +1,17 @@
+C004 000  	jmp to start
+0001 001	one 	dw		1
+0010 002	size of program
+3000 003 	loadit
+3011 004	load  i		starts from i = 0
+5003 005	add loadit
+4007 006	store loadit
+3007 007 	loadit
+1800 008	printH
+3011 009	load 	i
+5001 00A	add 	1
+4011 00B	store 	i
+3002 00C	load 	size
+6011 00D	sub 	i
+E010 00E	xit
+C004 00F	jmp loop
+0000 010	halt

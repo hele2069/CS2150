@@ -1,0 +1,56 @@
+C009 000	jmp 	start 	jump around the variables
+0000 001 	n	dw	0	int size
+0000 002	s 	dw	0	int	input
+0050 003	a 	dw 	50	int a[] address
+4000 004	storeit	dw	4000
+0001 005	one dw 	1
+0000 006	n	dw	0	int dupsize
+3000 007	loadit	dw 	3000
+0000 008	c 	dw 	1 count
+3005 009	load 1
+4008 00A 	store 	count
+1000 00B 	start read array size
+4001 00C	store	n
+4006 00D	store	dupsize
+3001 00E	load 	n		load loop  starts
+D01F 00F	jumpe	start
+1000 010	readH	a
+4002 011	store 	a
+3004 012	load	storeit
+5003 013	add 	address
+5008 014	add 	1
+4017 015	store 	storeit
+3002 016	load	input
+0000 017	storeit
+3008 018	load	c
+5005 019	add		1
+4008 01A	store 	c
+3001 01B	load	n
+6005 01C	sub		1
+4001 01D	store 	n
+C00E 01E	jmp 	loop
+3001 01F	load 	n
+6006 020	sub		dupsize
+D02B 021	jumpe 	if sub dupsize == 0
+5006 022	add 	dupsize
+5005 023	add 	1
+4001 024	store 	n
+5003 025 	add 	address
+5007 026	add 	loadit
+4028 027	store 	loadit
+0000 028	loadit
+1800 029 	printH
+C01F 02A	jmp 	second loop
+3001 02B 	load 	n
+D037 02C	jumpe 	to halt
+3007 02D	load 	loadit
+5001 02E	add 	n
+5003 02F	add 	address
+4031 030	store 	loadit
+0000 031 	loadit
+1800 032	printH
+3001 033	load 	n
+6005 034 	sub 	1
+4001 035 	store 	n
+C02B 036	loop
+0000 037	halt
