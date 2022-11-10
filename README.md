@@ -1,4 +1,4 @@
-# CS-2150
+# Codebase for CS 2150
 ### C++
 ### Data Structure
 ### Assembly
